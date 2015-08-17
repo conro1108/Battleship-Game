@@ -100,27 +100,27 @@ int chInt(char input){
 		return 2;
 		break;
 	case 'C':
-	case '51':
+	case 51:
 		return 3;
 		break;
 	case 'D':
-	case '52':
+	case 52:
 		return 4;
 		break;
 	case 'E':
-	case '53':
+	case 53:
 		return 5;
 		break;
 	case 'F':
-	case '54':
+	case 54:
 		return 6;
 		break;
 	case 'G':
-	case '55':
+	case 55:
 		return 7;
 		break;
 	case 'H':
-	case '56':
+	case 56:
 		return 8;
 		break;
 	default:
