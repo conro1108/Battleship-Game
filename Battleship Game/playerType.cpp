@@ -55,7 +55,11 @@ void player::showShips(){
 	gameBoard[battleShip.b5[0] - 1][battleShip.b5[1] - 1] = '5';
 }
 
-//
+//main attack function. This takes the players guess as a parameter, first 
+//checks to make sure that the guess is on the board and not a spot
+//that has already been guessed, if it is an unguessed spot on the 
+//8x8 board, then the coordinate is passed to the attack functions for 
+//each individual ship.
 void player::attack(int row, int col){
 	if (gameBoard[row - 1][col - 1] == 'O' || gameBoard[row - 1][col - 1] == 'X'){
 		cout << "You already hit that!\n\n";

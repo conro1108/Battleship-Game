@@ -58,7 +58,9 @@ int main(){
 
 //this needs better error checking, try/catch or assert to make sure
 //input other than a-h does not lead to undefined behavior. Maybe 
-//direct conversion with ASCII values instead of switch.
+//direct conversion with ASCII values instead of switch, since 
+//out of range errors will be handled by player::attack() as long as 
+//conversion is carried out correctly.
 int chInt(char input){
 	switch (toupper(input)){
 	case 'A':
@@ -86,7 +88,7 @@ int chInt(char input){
 		return 8;
 		break;
 	default:
-		cout << "error in char -> int conversion function";
+		cout << "error in char -> int conversion function, enter a-h";
 		return 0;
 	}
 }
