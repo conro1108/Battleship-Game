@@ -27,7 +27,9 @@ int main(){
 		p1print(player1);
 		cout << "Guess Column: ";
 
-		//
+		//I intended this to give an error message if col can not be stored as a char, eg when
+		//user inputs a string of chars. Stops the issue that came from this, but instead of calling
+		//its own error message, it displays the "Get Row: " and shouts that error. iostream is a fucker.
 		if (!(cin >> inCol)){
 			cout << "Error! Column guess must be a letter between A and H\n";
 			break;
@@ -37,7 +39,8 @@ int main(){
 		}
 
 		cout << "Guess Row: ";
-		//gives an 
+
+		//gives an error message if input is not an int
 		if(!(cin >> row)){
 			cout<< "Error! Row guess must be a number between 1 and 8!\n";
 			break;
