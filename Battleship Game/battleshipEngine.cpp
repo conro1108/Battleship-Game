@@ -83,11 +83,9 @@ int main(){
 	return 0;
 }
 
-//this needs better error checking, try/catch or assert to make sure
-//input other than a-h does not lead to undefined behavior. Maybe 
-//direct conversion with ASCII values instead of switch, since 
-//out of range errors will be handled by player::attack() as long as 
-//conversion is carried out correctly.
+//function to convert user guess for column into int for processing.
+//works if user inputs char(a-h) or int(1-8). returns -1 for unexpected input,
+//which will result in an "That isnt on the ocean" message when player::attack is called
 int chInt(char input){
 	switch (toupper(input)){
 	case 'A':
