@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////
+//battleshipEngine drives the battleship game, containing the basic
+//structure of the game and getting user input.
+/////////////////////////////////////////////////////////////////
 #include"playerType.h"
 #include<cstdlib>
 #include<iostream>
@@ -16,14 +20,20 @@ int main(){
 	int turn = 1;
 	int row, col;
 	char inCol;
+
 	do{
 		cout << "Player 1, turn " << turn << "!\n\n";
 		p1print(player1);
 		cout << "Please make your guess: column and row separated by space:  ";
 		cin >> inCol >> row;
+
+		//converts input 'A'-'H' to 1-8
 		col = chInt(inCol);
+
 		player1.attack(row, col);
+
 		p1print(player1);
+
 		if (player1.allSunk()){
 			gameOver = true;
 			break;
@@ -46,6 +56,9 @@ int main(){
 	return 0;
 }
 
+//this needs better error checking, try/catch or assert to make sure
+//input other than a-h does not lead to undefined behavior. Maybe 
+//direct conversion with ASCII values instead of switch.
 int chInt(char input){
 	switch (toupper(input)){
 	case 'A':
@@ -77,6 +90,9 @@ int chInt(char input){
 		return 0;
 	}
 }
+
+//these print functions were a quick and dirty way to attach a player
+//label to the board for clarity during gameplay
 void p1print(player p1){
 	cout << "Player 1 Board:\n";
 	p1.printBoard();

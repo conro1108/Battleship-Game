@@ -1,11 +1,15 @@
 #ifndef ship_type
 #define ship_type
 //target coordinates stored in [row, col] format
+
+//I think ships would be better off as a single class, with a vector
+//containing coordinates, instead of an array for each target block
 struct ship1{
 	ship1(){
 		b1hit = false;
 	}
 
+	//target block coordinate
 	int b1[2];
 
 	bool b1hit;
@@ -21,6 +25,7 @@ struct ship3{
 		b3hit = false;
 	}
 
+	//coordinates of target blocks
 	int b1[2];
 	int b2[2];
 	int b3[2];
@@ -48,6 +53,7 @@ struct ship5{
 		b5hit = false;
 	}
 
+	//target block coordinates
 	int b1[2];
 	int b2[2];
 	int b3[2];

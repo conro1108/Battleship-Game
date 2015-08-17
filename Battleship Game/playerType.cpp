@@ -6,11 +6,14 @@ using namespace std;
 player::player(){
 	intitializeBoard();
 	
+	//ships created in descending order so that more room is available
+	//for larger ships.
 	create5Blockship();
 	create3BlockShip();
 	create1BlockShip();
 }
 
+//initializes board to starting state
 void player::intitializeBoard(){
 	for (int i = 0; i < 8; i++){
 		for (int j = 0; j < 8; j++){
@@ -19,6 +22,7 @@ void player::intitializeBoard(){
 	}
 }
 
+//prints board
 void player::printBoard(){
 	cout << " ";
 	for (char i = 'A'; i <= 'H'; i++){
@@ -36,6 +40,7 @@ void player::printBoard(){
 	}
 }
 
+//displays location of ships, for debugging/testing purposes
 void player::showShips(){
 	gameBoard[mineSweeper.b1[0] - 1][mineSweeper.b1[1] - 1] = '1';
 
@@ -50,6 +55,7 @@ void player::showShips(){
 	gameBoard[battleShip.b5[0] - 1][battleShip.b5[1] - 1] = '5';
 }
 
+//
 void player::attack(int row, int col){
 	if (gameBoard[row - 1][col - 1] == 'O' || gameBoard[row - 1][col - 1] == 'X'){
 		cout << "You already hit that!\n\n";
@@ -70,8 +76,12 @@ void player::attack(int row, int col){
 	}
 }
 
+//checks guess against coordinates of the battleShip. returns true
+//if a target is hit
 bool player::attack5(int row, int col){
 	bool hit = false;
+
+	//if a hit is recorded, that spot on the board is set as 'X'
 	if (row == battleShip.b1[0] && col == battleShip.b1[1]){
 		battleShip.b1hit = true;
 		gameBoard[row - 1][col - 1] = 'X';
@@ -97,6 +107,8 @@ bool player::attack5(int row, int col){
 		gameBoard[row - 1][col - 1] = 'X';
 		hit = true;
 	}
+
+	//checks conditions to see if any alerts need to be output
 	if (hit){
 		cout << "You hit my Battleship!\n\n";
 	}
@@ -106,6 +118,7 @@ bool player::attack5(int row, int col){
 	return hit;
 }
 
+//checks guess against crusader
 bool player::attack3(int row, int col){
 	bool hit = false;
 	if (row == crusader.b1[0] && col == crusader.b1[1]){
@@ -133,6 +146,7 @@ bool player::attack3(int row, int col){
 	return hit;
 }
 
+//checks guess against minesweeper
 bool player::attack1(int row, int col){
 	if (row == mineSweeper.b1[0] && col == mineSweeper.b1[1]){
 		mineSweeper.b1hit = true;
@@ -314,6 +328,7 @@ void player::create5Blockship(){
 	}
 }
 
+//check if 
 bool player::overlap5(int row, int col){
 	if (row == battleShip.b1[0] && col == battleShip.b1[1]){
 		return true;
@@ -333,6 +348,7 @@ bool player::overlap5(int row, int col){
 	return false;
 }
 
+//returns true if every ship is sunk
 bool player::allSunk(){
 	if (battleShip.isSunk() && crusader.isSunk() && mineSweeper.isSunk()){
 		return true;
