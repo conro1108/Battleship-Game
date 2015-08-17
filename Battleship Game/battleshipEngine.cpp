@@ -19,16 +19,29 @@ int main(){
 	bool gameOver = false;
 	int turn = 1;
 	int row, col;
+	//char inCol for column letter input by user, to be converted to int col for processing
 	char inCol;
 
 	do{
 		cout << "Player 1, turn " << turn << "!\n\n";
 		p1print(player1);
-		cout << "Please make your guess: column and row separated by space:  ";
-		cin >> inCol >> row;
+		cout << "Guess Column: ";
 
-		//converts input 'A'-'H' to 1-8
-		col = chInt(inCol);
+		//
+		if (!(cin >> inCol)){
+			cout << "Error! Column guess must be a letter between A and H\n";
+			break;
+		}
+		else{
+			col = chInt(inCol);
+		}
+
+		cout << "Guess Row: ";
+		//gives an 
+		if(!(cin >> row)){
+			cout<< "Error! Row guess must be a number between 1 and 8!\n";
+			break;
+		}
 
 		player1.attack(row, col);
 
@@ -41,9 +54,23 @@ int main(){
 
 		cout << "Player 2, turn " << turn << "!\n\n";
 		p2print(player2);
-		cout << "Please make your guess: column and row separated by space:";
-		cin >> inCol >> row;
-		col = chInt(inCol);
+		cout << "Guess Column: ";
+
+		
+		if (!(cin >> inCol)){
+			cout << "Error! Column guess must be a letter between A and H\n";
+			break;
+		}
+		else{
+			col = chInt(inCol);
+		}
+
+		cout << "Guess Row: ";
+		if(!(cin >> row)){
+			cout<< "Error! Row guess must be a number between 1 and 8!\n";
+			break;
+		}
+
 		player2.attack(row, col);
 		p2print(player2);
 		if (player2.allSunk()){
@@ -64,32 +91,40 @@ int main(){
 int chInt(char input){
 	switch (toupper(input)){
 	case 'A':
+	//toupper('1') returns 49
+	case 49:
 		return 1;
 		break;
 	case 'B':
+	case 50:
 		return 2;
 		break;
 	case 'C':
+	case '51':
 		return 3;
 		break;
 	case 'D':
+	case '52':
 		return 4;
 		break;
 	case 'E':
+	case '53':
 		return 5;
 		break;
 	case 'F':
+	case '54':
 		return 6;
 		break;
 	case 'G':
+	case '55':
 		return 7;
 		break;
 	case 'H':
+	case '56':
 		return 8;
 		break;
 	default:
-		cout << "error in char -> int conversion function, enter a-h";
-		return 0;
+		return -1;
 	}
 }
 
