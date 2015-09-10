@@ -29,7 +29,7 @@ int main(){
 
 		//I intended this to give an error message if col can not be stored as a char, eg when
 		//user inputs a string of chars. Stops the issue that came from this, but instead of calling
-		//its own error message, it displays the "Get Row: " and shouts that error. iostream is a fucker.
+		//its own error message, it displays the "Get Row: " and shouts that error.
 		if (!(cin >> inCol)){
 			cout << "Error! Column guess must be a letter between A and H\n";
 			break;
